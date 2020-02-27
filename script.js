@@ -13,8 +13,8 @@ const builtInSort = () => {
     const sortedArticles = Array.from(articles).sort((a, b) => {
         let first = parseInt(a.querySelector('.article-up-vote-count').innerText)
         let second = parseInt(b.querySelector('.article-up-vote-count').innerText)
-        if(first == second) return 0
-        else if(first > second) return -1
+        if (first == second) return 0
+        else if (first > second) return -1
         else return 1
     })
     sortedArticles.forEach((article, index) => document.querySelector('.articles').append(article))
@@ -23,28 +23,42 @@ const builtInSort = () => {
 // Insertion Sort
 const insertionSort = () => {
     const sort = arr => {
+        const articles = document.querySelectorAll('article')
         for (let i = 0; i < arr.length; i++) {
-        let curr = parseInt(arr[i].querySelector('.article-up-vote-count').innerText)
-          let j
+            let curr = parseInt(arr[i].querySelector('.article-up-vote-count').innerText)
+            let j
 
-          for (j = i - 1; j >= 0 && arr[j] > curr; j--) {
-            let temp = arr[j + 1]
-            console.log(`moving ${j} to ${j+1}`)
-            arr[j + 1] = arr[j]
-            console.log(`moving temp to ${j}`)
-            arr[j] = temp
-          }
-          arr[j + 1] = curr
+            for (j = i - 1; j >= 0 && arr[j] > curr; j--) {
+                let temp = arr[j + 1]
+                let temp1 = document.querySelectorAll('article')[j + 1].cloneNode(true)
+                articles[j + 1] = articles[j]
+                document.querySelector('.articles').append(articles[j + 1])
+                arr[j + 1] = arr[j]
+                articles[j] = temp1
+                document.querySelector('.articles').append(articles[j])
+                arr[j] = temp
+            }
+            arr[j + 1] = curr
+            articles[j + 1] = articles[i]
+            document.querySelector('.articles').append(articles[j + 1])
         }
-        return arr
-      }
-      console.log('articles:', document.querySelectorAll('article'))
-      const articlesArray = [...Array.from(document.querySelectorAll('article'))]
-      const sortedArticles = sort(articlesArray)
-      console.log('sortedArticles', sortedArticles)
-      sortedArticles.forEach((article, index) => {
-          document.querySelector('.articles').append(document.querySelectorAll('article')[article])
-        })
+        return articles // [article2, article1, article3]
+    }
+    //   const articlesArray = document.querySelectorAll('article')[0].cloneNode(true)
+    //   document.querySelectorAll('article').forEach(article => {
+
+    // })
+    const articlesArray = Array.from(document.querySelectorAll('article'))
+    //   console.log('articlesArray', articlesArray)
+    let sortedArticles = sort(articlesArray)
+    console.log('sortedArticles', sortedArticles)
+    // sortedArticles = [...sortedArticles]
+    // [sortedArticles[0], sortedArticles[2]] = [sortedArticles[2], sortedArticles[0]]
+    // sortedArticles[0] = sortedArticles[2]
+    // document.querySelector('.articles').append(sortedArticles[0])
+    // sortedArticles.forEach((article, index) => {
+    //     document.querySelector('.articles').append(article)
+    // })
 }
 
 const incrementByOne = () => {
