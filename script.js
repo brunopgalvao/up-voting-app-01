@@ -46,7 +46,7 @@ const insertionSort = () => {
 
 const incrementByOne = () => {
     event.target.nextElementSibling.innerText = parseInt(event.target.nextElementSibling.innerText) + 1
-    insertionSort()
+    builtInSort()
 }
 
 upVoteArrows.forEach(upArrow => upArrow.addEventListener('click', incrementByOne))
