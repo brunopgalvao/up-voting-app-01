@@ -20,6 +20,16 @@ const builtInSort = () => {
     sortedArticles.forEach((article, index) => document.querySelector('.articles').append(article))
 }
 
+// Bubble Sort - can i make this independent of the dom?
+const bubbleSort = (arr) => {
+    for (let i = (arr.length - 1); i >= 0; i--)
+        for (let j = (arr.length - i); j > 0; j--)
+            if (arr[j] < arr[j - 1])
+                [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]]
+    console.log(arr)
+    return arr
+}
+
 // Insertion Sort
 const insertionSort = () => {
     const sortAsc = arr => {
@@ -66,7 +76,7 @@ const insertionSort = () => {
     }
 
     const articlesArray = Array.from(document.querySelectorAll('article'))
-    sortDesc(articlesArray)
+    sortAsc(articlesArray)
 }
 
 const incrementByOne = () => {
