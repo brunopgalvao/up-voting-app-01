@@ -22,7 +22,7 @@ const builtInSort = () => {
 
 // Insertion Sort
 const insertionSort = () => {
-    const sort = arr => {
+    const sortAsc = arr => {
         const articles = document.querySelectorAll('article')
         for (let i = 0; i < arr.length; i++) {
             let curr = parseInt(arr[i].querySelector('.article-up-vote-count').innerText)
@@ -42,23 +42,31 @@ const insertionSort = () => {
             articles[j + 1] = articles[i]
             document.querySelector('.articles').append(articles[j + 1])
         }
-        return articles // [article2, article1, article3]
+        return articles
     }
-    //   const articlesArray = document.querySelectorAll('article')[0].cloneNode(true)
-    //   document.querySelectorAll('article').forEach(article => {
 
-    // })
+    const sortDesc = arr => {
+        const articles = document.querySelectorAll('article')
+        for(let i = arr.length - 1; i >= 0; i--) {
+            let curr = parseInt(arr[i].querySelector('.article-up-vote-count').innerText)
+            let j
+
+            for(j = i; j < arr.length && arr[j+1] > curr; j++) { 
+                arr[j] = arr[j + 1]
+                articles[j] = articles[j + 1]
+                document.querySelector('.articles').append(articles[j])
+            }
+            
+            arr[j] = curr
+            articles[j] = articles[i]
+            document.querySelector('.articles').append(articles[j])
+            console.log('arr', arr)
+        }
+        return arr
+    }
+
     const articlesArray = Array.from(document.querySelectorAll('article'))
-    //   console.log('articlesArray', articlesArray)
-    let sortedArticles = sort(articlesArray)
-    console.log('sortedArticles', sortedArticles)
-    // sortedArticles = [...sortedArticles]
-    // [sortedArticles[0], sortedArticles[2]] = [sortedArticles[2], sortedArticles[0]]
-    // sortedArticles[0] = sortedArticles[2]
-    // document.querySelector('.articles').append(sortedArticles[0])
-    // sortedArticles.forEach((article, index) => {
-    //     document.querySelector('.articles').append(article)
-    // })
+    sortDesc(articlesArray)
 }
 
 const incrementByOne = () => {
