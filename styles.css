@@ -11,36 +11,36 @@ body {
     padding: 20px;
 }
 
-.articles {
+.cards {
     display: flex;
     flex-direction: column;
     max-width: 70vw;
     margin: 30px;
 }
 
-article {
+.card {
     display: flex;
     margin-bottom: 30px;
     box-shadow: 2px 2px 5px lightgrey;
     padding: 50px;
 }
 
-.article-content {
+.card-content {
     width: 80%;
 }
 
-.article-content h2 {
+.card-content h2 {
     letter-spacing: .3px;
     padding: 10px;
 }
 
-.article-content p {
+.card-content p {
     line-height: 1.4;
     letter-spacing: .3px;
     padding: 10px;
 }
 
-.article-up-vote {
+.card-up-vote {
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -48,14 +48,14 @@ article {
     align-items: center;
 }
 
-.article-up-vote-arrow {
+.card-up-vote-arrow {
     font-family: 'Courier New', Courier, monospace;
     font-size: 6em;
     font-weight: 600;
     cursor: pointer;
 }
 
-.article-up-vote-count {
+.card-up-vote-count {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
 }
@@ -65,7 +65,7 @@ article {
         margin-top: 100px;
         height: 90vh;
     }
-    .articles {
+    .cards {
         max-width: 98vw;
     }
 }
